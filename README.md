@@ -5,6 +5,3 @@ Mini editor de código desenvolvido com o framework Electron.
 ## Autor
 Professor José de Assis
 
-
-### Em produção... 
-🟦🟦🟦⬜️⬜️⬜️⬜️⬜️
