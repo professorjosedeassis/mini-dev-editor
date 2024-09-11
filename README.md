@@ -3,7 +3,7 @@
 # Mini Dev Editor
 Mini editor de código desenvolvido com o framework Electron.
 
-![minidev](https://github.com/professorjosedeassis/mini-dev-editor/blob/main/minidev.png)
+![minidev](https://github.com/professorjosedeassis/mini-dev-editor/blob/main/src/public/minidev.png)
 ## Autor
 Professor José de Assis
 ### Iniciar tutorial:
