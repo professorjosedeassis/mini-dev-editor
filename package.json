@@ -1,0 +1,22 @@
+{
+  "name": "mini-dev-editor",
+  "version": "1.0.0",
+  "description": "Mini editor de código",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/professorjosedeassis/mini-dev-editor.git"
+  },
+  "author": "Professor José de Assis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/professorjosedeassis/mini-dev-editor/issues"
+  },
+  "homepage": "https://github.com/professorjosedeassis/mini-dev-editor#readme",
+  "devDependencies": {
+    "electron": "^32.0.2"
+  }
+}
