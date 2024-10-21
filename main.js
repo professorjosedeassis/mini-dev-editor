@@ -1,4 +1,4 @@
-const { app, BrowserWindow, nativeTheme } = require('electron/main')
+const { app, BrowserWindow, nativeTheme, Menu, shell } = require('electron/main')
 const path = require('node:path')
 
 // janela principal
@@ -12,6 +12,9 @@ function createWindow() {
             preload: path.join(__dirname, 'preload.js')
         }
     })
+
+    // menu personalizado
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 
     win.loadFile('./src/views/index.html')
 }
@@ -35,7 +38,7 @@ function aboutWindow() {
 
 app.whenReady().then(() => {
     createWindow()
-    
+
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow()
@@ -48,3 +51,125 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+
+// menu
+const template = [
+    {
+        label: 'Arquivo',
+        submenu: [
+            {
+                label: 'Novo',
+                accelerator: 'CmdOrCtrl+N'
+            },
+            {
+                label: 'Abrir',
+                accelerator: 'CmdOrCtrl+O'
+            },
+            {
+                label: 'Salvar',
+                accelerator: 'CmdOrCtrl+S'
+            },
+            {
+                label: 'Salvar como',
+                accelerator: 'CmdOrCtrl+Shift+S'
+            },
+            {
+                type: 'separator'
+            },
+            {
+                label: 'Sair',
+                click: () => app.quit(),
+                accelerator: 'Alt+F4'
+            }
+        ]
+    },
+    {
+        label: 'Editar',
+        submenu: [
+            {
+                label: 'Desfazer',
+                role: 'undo'
+            },
+            {
+                label: 'Refazer',
+                role: 'redo'
+            },
+            {
+                type: 'separator'
+            },
+            {
+                label: 'Recortar',
+                role: 'cut'
+            },
+            {
+                label: 'Copiar',
+                role: 'copy'
+            },
+            {
+                label: 'Colar',
+                role: 'paste'
+            }
+        ]
+    },
+    {
+        label: 'Zoom',
+        submenu: [
+            {
+                label: 'Aplicar zoom',
+                role: 'zoomIn'
+            },
+            {
+                label: 'Reduzir',
+                role: 'zoomOut'
+            },
+            {
+                label: 'Restaurar o zoom padrão',
+                role: 'resetZoom'
+            }
+        ]
+
+    },
+    ,
+    {
+        label: 'Cor',
+        submenu: [
+            {
+                label: 'Amarelo'
+            },
+            {
+                label: 'Azul'
+            },
+            {
+                label: 'Laranja'
+            },
+            {
+                label: 'Pink'
+            },
+            {
+                label: 'Roxo'
+            },
+            {
+                label: 'Verde'
+            },
+            {
+                type: 'separator'
+            },
+            {
+                label: 'Restaurar a cor padrão'
+            }
+        ]
+    },
+    {
+        label: 'Ajuda',
+        submenu: [
+            {
+                label: 'Repositório',
+                click: () => shell.openExternal('https://github.com/professorjosedeassis/mini-dev-editor.git')
+            },
+            {
+                label: 'Sobre',
+                click: () => aboutWindow()
+            }
+        ]
+    }
+]
