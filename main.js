@@ -22,18 +22,21 @@ function createWindow() {
 // janela sobre
 function aboutWindow() {
     nativeTheme.themeSource = 'dark'
-    const win = new BrowserWindow({
-        width: 320,
-        height: 160,
-        autoHideMenuBar: true,
-        resizable: false,
-        minimizable: false,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
-    })
+    const main = BrowserWindow.getFocusedWindow()
+    let about
+    if (main) {
+        about = new BrowserWindow({
+            width: 320,
+            height: 160,
+            autoHideMenuBar: true,
+            resizable: false,
+            minimizable: false,
+            parent: main,
+            modal: true
+        })
+    }
 
-    win.loadFile('./src/views/sobre.html')
+    about.loadFile('./src/views/sobre.html')
 }
 
 app.whenReady().then(() => {
