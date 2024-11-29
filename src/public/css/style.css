@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('../Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf');
+    src: url('../Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf')
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Source Code Pro";
+}
+
+/* Sobre */
+#sobre {
+    padding: 20px;
+}
+
+#sobre h1 {
+    font-size: 1.2em;
+}
+
