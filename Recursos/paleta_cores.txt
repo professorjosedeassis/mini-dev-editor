@@ -1,0 +1,13 @@
+/* paleta de cores */
+:root {
+    --fundo: #1f1f1f;
+    --branco: #fff;
+    --amarelo: #e5b567;
+    --azul: #9cdcfe;
+    --cinzaClaro: #d6d6d6;
+    --cinza: #858585;
+    --laranja: #e87d3e;
+    --pink: #b05279;
+    --roxo: #9e86c8;
+    --verde: #b4d273;
+}
