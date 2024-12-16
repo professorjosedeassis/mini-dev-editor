@@ -6,6 +6,20 @@
     src: url('../Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf')
 }
 
+/* paleta de cores */
+:root {
+    --fundo: #1f1f1f;
+    --branco: #fff;
+    --amarelo: #e5b567;
+    --azul: #9cdcfe;
+    --cinzaClaro: #d6d6d6;
+    --cinza: #858585;
+    --laranja: #e87d3e;
+    --pink: #b05279;
+    --roxo: #9e86c8;
+    --verde: #b4d273;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +29,36 @@
 
 body {
     font-family: "Source Code Pro";
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#linhas {
+    width: 8%;
+    height: 100%;
+    background-color: var(--amarelo);
+    float: left;
+}
+
+#txtArea {
+    width: 92%;
+    height: 100%;
+    background-color: var(--cinzaClaro);
+    font-family: Source Code Pro;
+    font-size: 1.1em;
+    resize: none;
+}
+
+#txtArea:focus {
+    outline: none;
 }
 
 /* Sobre */
