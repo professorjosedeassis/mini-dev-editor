@@ -33,6 +33,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: var(--fundo);
 }
 
 html {
@@ -51,7 +52,8 @@ html {
 #txtArea {
     width: 92%;
     height: 100%;
-    background-color: var(--cinzaClaro);
+    background-color: var(--fundo);
+    color: var(--cinzaClaro);
     font-family: Source Code Pro;
     font-size: 1.1em;
     resize: none;
@@ -64,6 +66,7 @@ html {
 /* Sobre */
 #sobre {
     padding: 20px;
+    color: var(--cinzaClaro);
 }
 
 #sobre h1 {

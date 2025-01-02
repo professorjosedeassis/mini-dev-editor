@@ -137,28 +137,35 @@ const template = [
         label: 'Cor',
         submenu: [
             {
-                label: 'Amarelo'
+                label: 'Amarelo',
+                click: () => win.webContents.send('set-color', "var(--amarelo")               
             },
             {
-                label: 'Azul'
+                label: 'Azul',
+                click: () => win.webContents.send('set-color', "var(--azul") 
             },
             {
-                label: 'Laranja'
+                label: 'Laranja',
+                click: () => win.webContents.send('set-color', "var(--laranja") 
             },
             {
-                label: 'Pink'
+                label: 'Pink',
+                click: () => win.webContents.send('set-color', "var(--pink") 
             },
             {
-                label: 'Roxo'
+                label: 'Roxo',
+                click: () => win.webContents.send('set-color', "var(--roxo") 
             },
             {
-                label: 'Verde'
+                label: 'Verde',
+                click: () => win.webContents.send('set-color', "var(--verde") 
             },
             {
                 type: 'separator'
             },
             {
-                label: 'Restaurar a cor padrão'
+                label: 'Restaurar a cor padrão',
+                click: () => win.webContents.send('set-color', "var(--cinzaClaro") 
             }
         ]
     },
