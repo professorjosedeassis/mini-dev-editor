@@ -44,9 +44,14 @@ html {
 
 #linhas {
     width: 8%;
-    height: 100%;
-    background-color: var(--amarelo);
+    height: 100%;   
     float: left;
+    font-size: 1.1em;
+    text-align: right;
+    padding-right: 20px;
+    color: var(--cinzaClaro);
+    overflow-y: auto;
+    overflow: hidden;
 }
 
 #txtArea {
