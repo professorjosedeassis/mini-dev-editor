@@ -1,5 +1,8 @@
-const { app, BrowserWindow, nativeTheme, Menu, shell } = require('electron/main')
+const { app, BrowserWindow, nativeTheme, Menu, shell, dialog } = require('electron/main')
 const path = require('node:path')
+
+let file = {}
+const fs = require('fs')
 
 // janela principal
 let win
@@ -62,11 +65,13 @@ const template = [
         submenu: [
             {
                 label: 'Novo',
-                accelerator: 'CmdOrCtrl+N'
+                accelerator: 'CmdOrCtrl+N',
+                click: () => novoArquivo()
             },
             {
                 label: 'Abrir',
-                accelerator: 'CmdOrCtrl+O'
+                accelerator: 'CmdOrCtrl+O',
+                click: () => abrirArquivo()
             },
             {
                 label: 'Salvar',
@@ -138,34 +143,34 @@ const template = [
         submenu: [
             {
                 label: 'Amarelo',
-                click: () => win.webContents.send('set-color', "var(--amarelo")               
+                click: () => win.webContents.send('set-color', "var(--amarelo")
             },
             {
                 label: 'Azul',
-                click: () => win.webContents.send('set-color', "var(--azul") 
+                click: () => win.webContents.send('set-color', "var(--azul")
             },
             {
                 label: 'Laranja',
-                click: () => win.webContents.send('set-color', "var(--laranja") 
+                click: () => win.webContents.send('set-color', "var(--laranja")
             },
             {
                 label: 'Pink',
-                click: () => win.webContents.send('set-color', "var(--pink") 
+                click: () => win.webContents.send('set-color', "var(--pink")
             },
             {
                 label: 'Roxo',
-                click: () => win.webContents.send('set-color', "var(--roxo") 
+                click: () => win.webContents.send('set-color', "var(--roxo")
             },
             {
                 label: 'Verde',
-                click: () => win.webContents.send('set-color', "var(--verde") 
+                click: () => win.webContents.send('set-color', "var(--verde")
             },
             {
                 type: 'separator'
             },
             {
                 label: 'Restaurar a cor padrão',
-                click: () => win.webContents.send('set-color', "var(--cinzaClaro") 
+                click: () => win.webContents.send('set-color', "var(--cinzaClaro")
             }
         ]
     },
@@ -183,3 +188,39 @@ const template = [
         ]
     }
 ]
+
+//Novo arquivo
+function novoArquivo() {
+    file = {
+        name: "Sem título",
+        content: "",
+        saved: false,
+        path: app.getPath('documents') + 'Sem título'
+    }
+    win.webContents.send('set-file', file)
+}
+
+//Abrir arquivo
+async function abrirArquivo() {
+    try {
+        const dialogFile = await dialog.showOpenDialog({
+            defaultPath: '',
+            properties: ['openFile']
+        })
+        if (dialogFile.canceled) {
+            return false
+        } else {
+            const filePath = dialogFile.filePaths[0]
+            const fileContent = fs.readFileSync(filePath, 'utf-8')
+            const file = {
+                name: path.basename(filePath),
+                content: fileContent,
+                saved: true,
+                path: filePath
+            }
+            win.webContents.send('set-file', file)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}

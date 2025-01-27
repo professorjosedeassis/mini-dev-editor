@@ -1,5 +1,6 @@
 const linha = document.getElementById('linhas')
 const area = document.getElementById('txtArea')
+const nomeArquivo = document.getElementById('titulo')
 area.focus()
 
 //mudar a cor do texto
@@ -25,4 +26,11 @@ area.addEventListener('input', () => {
 
 area.addEventListener('scroll', () => {
     linha.scrollTop = area.scrollTop
+})
+
+//Novo arquivo | Abrir arquivo
+api.setFile((event, file) => {
+    area.value = file.content
+    nomeArquivo.innerHTML = `${file.name} - Mini Dev Editor`
+    numerarLinhas()
 })
