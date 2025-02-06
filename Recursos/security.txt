@@ -1,0 +1,5 @@
+<!-- impedir a execução de scripts externos ou não autorizados -->
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+
+//reduzir logs não críticos
+app.commandLine.appendSwitch('log-level', '3')
