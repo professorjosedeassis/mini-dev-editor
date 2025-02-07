@@ -58,6 +58,9 @@ app.on('window-all-closed', () => {
     }
 })
 
+//reduzir logs não críticos
+app.commandLine.appendSwitch('log-level', '3')
+
 // menu
 const template = [
     {
@@ -175,6 +178,15 @@ const template = [
         ]
     },
     {
+        label: 'Ferramentas',
+        submenu: [
+            {
+                label: 'DevTools',
+                role: 'toggleDevTools'
+            }
+        ]
+    },
+    {
         label: 'Ajuda',
         submenu: [
             {
@@ -212,7 +224,7 @@ async function abrirArquivo() {
         } else {
             const filePath = dialogFile.filePaths[0]
             const fileContent = fs.readFileSync(filePath, 'utf-8')
-            const file = {
+            file = {
                 name: path.basename(filePath),
                 content: fileContent,
                 saved: true,
