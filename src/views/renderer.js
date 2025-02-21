@@ -34,3 +34,10 @@ api.setFile((event, file) => {
     nomeArquivo.innerHTML = `${file.name} - Mini Dev Editor`
     numerarLinhas()
 })
+
+//Salvar | Salvar como
+document.addEventListener('DOMContentLoaded', () => {
+    area.addEventListener('keyup', () => {
+        api.updateContent(area.value)
+    })
+})

@@ -3,6 +3,7 @@ const path = require('node:path')
 
 let file = {}
 const fs = require('fs')
+const { ipcMain } = require('electron')
 
 // janela principal
 let win
@@ -78,11 +79,13 @@ const template = [
             },
             {
                 label: 'Salvar',
-                accelerator: 'CmdOrCtrl+S'
+                accelerator: 'CmdOrCtrl+S',
+                click: () => salvarArquivo(false)
             },
             {
                 label: 'Salvar como',
-                accelerator: 'CmdOrCtrl+Shift+S'
+                accelerator: 'CmdOrCtrl+Shift+S',
+                click: () => salvarArquivo(true)
             },
             {
                 type: 'separator'
@@ -232,6 +235,43 @@ async function abrirArquivo() {
             }
             win.webContents.send('set-file', file)
         }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//Salvar | Salvar como
+ipcMain.on('update-content', (event, content) => {
+    file.content = content
+})
+
+async function salvarArquivo(salvarComo) {
+    try {
+        let filePath = file.path
+        if (salvarComo || !file.saved) {
+            const dialogFile = await dialog.showSaveDialog({
+                defaultPath: file.path || app.getPath('documents'),
+                filters: [
+                    {
+                        name: 'Arquivos de texto',
+                        extensions: ['txt']
+                    },
+                    {
+                        name: 'Todos os arquivos',
+                        extensions: ['*']
+                    }
+                ]
+            })
+            if (dialogFile.canceled) {
+                return false
+            }
+            filePath = dialogFile.filePath
+        }
+        fs.writeFileSync(filePath, file.content, 'utf-8')
+        file.path = filePath
+        file.name = path.basename(filePath)
+        file.saved = true
+        win.webContents.send('set-file', file)
     } catch (error) {
         console.log(error)
     }
