@@ -9,8 +9,6 @@ Professor José de Assis
 ### Iniciar tutorial:
 ▶️ [Playlist](https://www.youtube.com/playlist?list=PLbEOwbQR9lqwBaRLbc0icG5ajvrFgaKqi)
 
-🟦🟦🟦⬜️⬜️⬜️⬜️ Em produção
-
 ## Como apoiar os tutoriais e projetos?
 ### Você pode me pagar um café! ☕
 
