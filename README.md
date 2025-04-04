@@ -6,7 +6,7 @@ Este tutorial te guia no passo a passo para criar um editor de código com Elect
 
 Use este projeto como base e solte a criatividade! Que tal adicionar destaque de sintaxe, integração com Git ou até um terminal embutido? Além de aprender na prática, você ainda turbina seu portfólio com um projeto de peso! 
 
-![minidev](https://github.com/professorjosedeassis/mini-dev-editor/blob/main/src/public/minidev.png)
+![minidev](electronJS.png)
 ## Autor
 Professor José de Assis
 ### Iniciar tutorial:
